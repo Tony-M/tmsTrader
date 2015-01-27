@@ -1,0 +1,3 @@
+tms_trader_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: TmsTraderBundle:Default:index }
