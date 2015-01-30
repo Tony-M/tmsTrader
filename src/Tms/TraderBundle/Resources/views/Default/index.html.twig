@@ -1,3 +1,133 @@
 {% extends "TmsTraderBundle::layout.html.twig" %}
 
-{% block body %}<h1>test H</h1><p>sldfhsdl fhsf s</p>{% endblock %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            {% block graph1 %}
+                <div class="col-xs-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Текущее состояние
+                        </div>
+                        <div class="panel-body">
+                            {#<iframe src="https://bitcoinwisdom.com/markets/btce/ltcrur" style="width:100%; height: 500px;">#}
+
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
+            {% endblock %}
+            {% block my_orders %}
+                <script>
+                    var trader = null;
+                    $(document).ready(function () {
+                        trader = new tmsTrader();
+                    });
+                </script>
+                <div class="col-xs-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Ордера
+                            <div style="float: right;">
+                                <div class="btn-group btn-group-xs" role="group"
+                                     aria-label="Extra-small button group">
+                                    <a class="btn btn-primary btn-xs" onclick="trader.openAllOrders()">Запустить все</a>
+                                    <a class="btn btn-danger btn-xs" onclick="trader.closeAllOrders()">Отменить все!</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-condansed" id="my_orders">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Валюта</th>
+                                    <th>Объем</th>
+                                    <th>Курс</th>
+                                    <th>Операция</th>
+                                    <th colspan="2">Действия</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                            <table class="table table-condansed" id="order_tpl" style="display: none">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="label label-default orderid_label"></div>
+                                        <input type="hidden" value="" class="orderid">
+                                    </td>
+                                    <td>
+                                        <select class="tms_inp_text ordercurrency" style="width: auto;">
+                                            <option value="none"></option>
+                                            <option value="LTC">LTC</option>
+                                            <option value="RUR">RUR</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input class="tms_inp_text ordervalue" type="text">
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div class="form-group">
+                                            <input class="tms_inp_text orderprice" type="text">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <select class="tms_inp_text ordertype" style="width: auto;">
+                                            <option value="none"></option>
+                                            <option value="ask" class="ask">Продать</option>
+                                            <option value="bid" class="bid">Купить</option>
+                                        </select>
+                                    </td>
+
+                                    <td>
+                                        <div class="btn-group btn-group-xs" role="group"
+                                             aria-label="Extra-small button group">
+
+                                            <input class="tms_inp_text orderstep hidden"
+                                                   style="float: left; ;width:50px" type="text">
+
+                                            <button type="button" class="btn btn-default orderstep_up hidden"><span
+                                                        class="glyphicon glyphicon-chevron-up"
+                                                        aria-hidden="true"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-default orderstep_down hidden"><span
+                                                        class="glyphicon glyphicon-chevron-down"
+                                                        aria-hidden="true"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-primary order_go">Go</button>
+                                            <button type="button" class="btn btn-danger order_stop hidden">Stop</button>
+                                        </div>
+
+
+                                    </td>
+                                    <td>
+                                        <div class="btn-group btn-group-xs" role="group"
+                                             aria-label="Extra-small button group">
+                                            <button type="button" class="btn btn-danger orderrm"><span
+                                                        class="glyphicon glyphicon-minus" aria-hidden="true"></button>
+                                            <button type="button" class="btn btn-default orderadd"><span
+                                                        class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                            </button>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            {% endblock %}
+        </div>
+    </div>
+
+
+{% endblock %}

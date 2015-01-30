@@ -1,0 +1,18 @@
+body{
+    padding-top: 60px;
+}
+#my_orders tr td {padding: 2px;}
+#my_orders .form-group{padding: 0px; margin:0px;}
+
+input.tms_inp_text , select.tms_inp_text{
+    border: 1px solid #1c1e22;
+    background-color: #272b30;
+    color: #c8c8c8;
+    height: 22px;
+}
+input.tms_inp_text {
+    width:100px;
+}
+
+.ask {color:#62c462!important;}
+.bid {color: #ee5f5b!important;}
